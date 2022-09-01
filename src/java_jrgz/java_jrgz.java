@@ -1,5 +1,5 @@
 //01.기본알고리즘
-//연습 Q3. 3개의 수 최솟값
+//연습 Q3. 4개의 수 최솟값
 
 package java_jrgz;
 
@@ -16,7 +16,6 @@ public class java_jrgz {
 			min = d;
 		
 		return min;
-		
 	}
 	public static void main(String[] args) {
 		int num = min4(30,20,10,20);
