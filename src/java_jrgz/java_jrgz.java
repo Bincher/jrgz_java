@@ -1,25 +1,36 @@
 //01.기본알고리즘
-//연습 Q3. 4개의 수 최솟값
+//실습 1C-1. 중앙값구하기
 
 package java_jrgz;
+import java.util.Scanner;
 
 public class java_jrgz {
-	static int min4(int a, int b, int c, int d) {
-		
-		int min = a;
-		
-		if (b<min)
-			min = b;
-		if (c<min)
-			min = c;
-		if (d<min)
-			min = d;
-		
-		return min;
+	static int med3(int a, int b, int c) {
+		if (a>=b)
+		{
+			if (b>=c)
+				return b;
+			else if (a>=c)
+				return c;
+			else
+				return a;
+		}
+		else if (a>c)
+			return a;
+		else if (b>c)
+			return c;
+		else
+			return b;
 	}
 	public static void main(String[] args) {
-		int num = min4(30,20,10,20);
-		System.out.print(num);
+		Scanner s = new Scanner(System.in);
+		System.out.print("a : ");
+		int a = s.nextInt();
+		System.out.print("b : ");
+		int b = s.nextInt();
+		System.out.print("c : ");
+		int c = s.nextInt();
+		System.out.print("중앙값 : " + med3(a,b,c));
 	}
 
 }
