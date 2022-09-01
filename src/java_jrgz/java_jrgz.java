@@ -19,6 +19,7 @@ public class java_jrgz {
 		//예시로 1,3,2
 		int num = max3(1,3,2);
 		System.out.print(num);
+		//테스트
 	}
 
 }
