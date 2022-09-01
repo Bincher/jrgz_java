@@ -1,25 +1,23 @@
 //01.기본알고리즘
-//연습 Q11. 자리수 구하기 
+//연습 Q17. n숫자 피라미드
 
 package java_jrgz;
 import java.util.Scanner;
 
 public class java_jrgz {
-	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
-		int num = s.nextInt();
-		int a = 10;
-		int b = 1;
-		while(true)
+	static void npira(int n){
+		for (int i = 1; i < n + 1 ; i++)
 		{
-			if (num / a > 0)
-			{
-				a *= 10;
-				b++;
-			}
-			else
-				break;
+			for(int j = i; j < n + 1; j++)
+				System.out.print(" ");
+			for(int j = i; j > 1; j--)
+				System.out.print(i%10);
+			for(int j = i; j >= 1; j--)
+				System.out.print(i%10);
+			System.out.println();
 		}
-		System.out.print(b);
+	}
+	public static void main(String[] args) {
+	npira(4);
 	}
 }
