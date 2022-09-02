@@ -1,5 +1,5 @@
 //02.기본 자료구조
-//연습 Q6. 기수 변환(그런데 배열순서를 바꾼)
+//연습 Q7. 기수변환(그런데 식을 곁들인) 
 
 package java_jrgz;
 import java.util.*;
@@ -9,11 +9,14 @@ public class java_jrgz {
 		int digits = 0;
 		String dchar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		char[] temp = new char[32];
-		// 0 1 2 3 4 digits = 5
+		// 그림대로 하긴했는데 마지막에 저게 맞는건지
 		do {
+			System.out.printf(r + "|" + "%6s" + "···" + (x % r) + "\n", x);
+			System.out.print(" +------ \n");
 			temp[digits++] = dchar.charAt(x % r);
 			x /= r;
 		}while(x != 0);
+		System.out.printf("  %6s" + "···" + 1 + "\n", x);
 		for(int i = 0; i < digits; i++)
 		{
 			d[i] = temp[digits - i - 1];
