@@ -1,30 +1,38 @@
 //02.기본 자료구조
-//연습 Q1. 난수와 배열
+//연습 Q2. 배열 요소 역순과 과정 설명
 
 package java_jrgz;
 import java.util.*;
 
 public class java_jrgz {
-	static int maxOf(int a[]){
-		int max = a[0];
-		
-		for (int i = 1; i < a.length; i++)
+	static void swap(int [] arr, int size){
+		int temp = 0;
+		for(int i = 0; i < (size/2); i++)
 		{
-			if (a[i] > max) max = a[i];
+			System.out.print("arr[" + i + "]" + "과(와) arr[" + (size-i-1) + "]를 교환합니다.\n");
+			temp = arr[size-i-1];
+			arr[size-i-1] = arr[i];
+			arr[i] = temp;
+			for (int j = 0; j < arr.length; j++)
+			{
+				System.out.print(arr[j] + " ");
+			}
+			System.out.println();
 		}
-		return max;
 		
 	}
 	public static void main(String[] args) {
-		long seed = System.currentTimeMillis();
-		Random r = new Random(seed);
-		int[] num = new int[100];
-		int size = r.nextInt(1,100);
-		for (int i = 0; i < size; i++)
+		Scanner s = new Scanner(System.in);
+		System.out.print("배열의 크기 지정 : ");
+		int size = s.nextInt();
+		
+		int [] arr = new int[size];
+		
+		for (int i = 0; i < arr.length; i++)
 		{
-			num[i] = 100 + r.nextInt(90);
-			System.out.print((i + 1) + "번째 사람의 키는 " + num[i] + "\n");
+			System.out.print((i+1) + "번째 요소 입력 : ");
+			arr[i] = s.nextInt();
 		}
-		System.out.print("가장 키가 큰 사람의 키는 " + maxOf(num));
+		swap(arr, size);
 	}
 }
