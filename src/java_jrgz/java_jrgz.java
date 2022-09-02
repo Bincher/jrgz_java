@@ -1,18 +1,24 @@
 //02.기본 자료구조
-//실습 2-8. 기수 변환
+//연습 Q6. 기수 변환(그런데 배열순서를 바꾼)
 
 package java_jrgz;
 import java.util.*;
 
 public class java_jrgz {
-	static int cardConvR(int x, int r, char[] d) {
+	static int cardConv(int x, int r, char[] d) {
 		int digits = 0;
 		String dchar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		
+		char[] temp = new char[32];
+		// 0 1 2 3 4 digits = 5
 		do {
-			d[digits++] = dchar.charAt(x % r);
+			temp[digits++] = dchar.charAt(x % r);
 			x /= r;
 		}while(x != 0);
+		for(int i = 0; i < digits; i++)
+		{
+			d[i] = temp[digits - i - 1];
+		}
+		
 		return digits;
 	}
 	public static void main(String[] args) {
@@ -34,10 +40,10 @@ public class java_jrgz {
 				cd = s.nextInt();
 			}while(cd < 2|| cd >36);
 			
-			dno = cardConvR(no, cd, cno);
+			dno = cardConv(no, cd, cno);
 			
 			System.out.print(cd + "진수로는 ");
-			for(int i = dno - 1; i >= 0 ; i--)
+			for(int i = 0; i < dno ; i++)
 			{
 				System.out.print(cno[i]);
 			}
