@@ -16,7 +16,8 @@ public class java_jrgz {
 		
 	}
 	public static void main(String[] args) {
-		Random r = new Random();
+		long seed = System.currentTimeMillis();
+		Random r = new Random(seed);
 		int[] num = new int[100];
 		int size = r.nextInt(1,100);
 		for (int i = 0; i < size; i++)
