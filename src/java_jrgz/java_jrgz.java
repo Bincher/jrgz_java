@@ -1,14 +1,14 @@
 //02.기본 자료구조
-//연습 Q4. copy
+//연습 Q5. rcopy
 
 package java_jrgz;
 import java.util.*;
 
 public class java_jrgz {
-	static void copy(int [] arr1, int [] arr2){
+	static void rcopy(int [] arr1, int [] arr2){
 		for (int i = 0; i < arr1.length; i++)
 		{
-			arr2[i] = arr1[i];
+			arr2[i] = arr1[arr1.length - i - 1];
 		}
 	}
 	public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class java_jrgz {
 			arr1[i] = s.nextInt();
 		}
 		
-		copy(arr1, arr2);
+		rcopy(arr1, arr2);
 		
 		for (int i = 0; i < arr1.length; i++)
 		{
