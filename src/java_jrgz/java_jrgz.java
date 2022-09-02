@@ -1,40 +1,49 @@
 //02.기본 자료구조
-//연습 Q5. rcopy
+//실습 2-8. 기수 변환
 
 package java_jrgz;
 import java.util.*;
 
 public class java_jrgz {
-	static void rcopy(int [] arr1, int [] arr2){
-		for (int i = 0; i < arr1.length; i++)
-		{
-			arr2[i] = arr1[arr1.length - i - 1];
-		}
+	static int cardConvR(int x, int r, char[] d) {
+		int digits = 0;
+		String dchar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		
+		do {
+			d[digits++] = dchar.charAt(x % r);
+			x /= r;
+		}while(x != 0);
+		return digits;
 	}
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
-		System.out.print("배열의 크기 지정 : ");
-		int size = s.nextInt();
+		int no;
+		int cd;
+		int dno;
+		int retry;
+		char[] cno = new char[32];
 		
-		int [] arr1 = new int[size];
-		int [] arr2 = new int[size];
-		
-		for (int i = 0; i < arr1.length; i++)
-		{
-			System.out.print((i+1) + "번째 요소 입력 : ");
-			arr1[i] = s.nextInt();
-		}
-		
-		rcopy(arr1, arr2);
-		
-		for (int i = 0; i < arr1.length; i++)
-		{
-			System.out.print(arr1[i] + " ");
-		}
-		System.out.println();
-		for (int i = 0; i < arr2.length; i++)
-		{
-			System.out.print(arr2[i] + " ");
-		}
+		do {
+			do {
+				System.out.print("변환할 수 : ");
+				no = s.nextInt();
+			}while(no<0);
+			
+			do {
+				System.out.print("몇진수로 변환? : ");
+				cd = s.nextInt();
+			}while(cd < 2|| cd >36);
+			
+			dno = cardConvR(no, cd, cno);
+			
+			System.out.print(cd + "진수로는 ");
+			for(int i = dno - 1; i >= 0 ; i--)
+			{
+				System.out.print(cno[i]);
+			}
+			
+			System.out.print("\n반복하시겠습니끼? ( 1.예 / 2.아니요 ) \n >>>>");
+			retry = s.nextInt();
+		}while(retry == 1);
 	}
 }
