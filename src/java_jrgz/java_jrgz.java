@@ -1,23 +1,29 @@
-//01.기본알고리즘
-//연습 Q17. n숫자 피라미드
+//02.기본 자료구조
+//연습 Q1. 난수와 배열
 
 package java_jrgz;
-import java.util.Scanner;
+import java.util.*;
 
 public class java_jrgz {
-	static void npira(int n){
-		for (int i = 1; i < n + 1 ; i++)
+	static int maxOf(int a[]){
+		int max = a[0];
+		
+		for (int i = 1; i < a.length; i++)
 		{
-			for(int j = i; j < n + 1; j++)
-				System.out.print(" ");
-			for(int j = i; j > 1; j--)
-				System.out.print(i%10);
-			for(int j = i; j >= 1; j--)
-				System.out.print(i%10);
-			System.out.println();
+			if (a[i] > max) max = a[i];
 		}
+		return max;
+		
 	}
 	public static void main(String[] args) {
-	npira(4);
+		Random r = new Random();
+		int[] num = new int[100];
+		int size = r.nextInt(1,100);
+		for (int i = 0; i < size; i++)
+		{
+			num[i] = 100 + r.nextInt(90);
+			System.out.print((i + 1) + "번째 사람의 키는 " + num[i] + "\n");
+		}
+		System.out.print("가장 키가 큰 사람의 키는 " + maxOf(num));
 	}
 }
