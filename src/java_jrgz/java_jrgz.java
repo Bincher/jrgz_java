@@ -1,5 +1,5 @@
 //02.기본 자료구조
-//실습 2-13. 윤년포함한 날짜계산 
+//연습 Q8. 윤년포함한 날짜계산(변수 days,i 삭제버전) 
 
 package java_jrgz;
 import java.util.*;
@@ -13,13 +13,12 @@ public class java_jrgz {
 		return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) ? 1 : 0;
 	}
 	static int dayOfYear(int y, int m, int d) {
-		int days = d;
-		
-		for (int i = 1; i < m; i++)
+		m -= 2;
+		while(m >= 0)
 		{
-			days += mdays[isLeap(y)][i - 1];
+			d += mdays[isLeap(y)][m--];
 		}
-		return days;
+		return d;
 	}
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
