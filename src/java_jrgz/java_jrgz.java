@@ -1,5 +1,5 @@
 //02.기본 자료구조
-//실습 2-14. 신체검사(수정)
+//연습 Q10. 신체검사(그런데 *를 곁들인)
 
 package java_jrgz;
 import java.util.*;
@@ -72,7 +72,12 @@ public class java_jrgz {
 		System.out.println("\n시력분포");
 		for (int i = 0; i < VMAX; i++)
 		{
-			System.out.printf("%3.1f~ : %2d명\n", (i / 10.0), vdist[i]);
+			System.out.printf("%3.1f~ : ", (i / 10.0));
+			for(int j = 0; j < vdist[i]; j++)
+			{
+				System.out.print("*");
+			}
+			System.out.println();
 		}
 	}
 }
