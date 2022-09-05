@@ -1,5 +1,5 @@
 //02.기본 자료구조
-//연습 Q8. 윤년포함한 날짜계산(변수 days,i 삭제버전) 
+//연습 Q9. 그 해 남은 일 수 구하기
 
 package java_jrgz;
 import java.util.*;
@@ -20,6 +20,17 @@ public class java_jrgz {
 		}
 		return d;
 	}
+	static int leftDayOfYear(int y, int m, int d)
+	{
+		int days = mdays[isLeap(y)][m-1] - d;
+		
+		for (int i = 11; i > (m - 1); i--)
+		{
+			days += mdays[isLeap(y)][i];
+		}
+		
+		return days;
+	}
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		int retry;
@@ -33,6 +44,7 @@ public class java_jrgz {
 			int day = s.nextInt();
 			
 			System.out.printf("그 해 %d일째입니다.\n", dayOfYear(year,month,day));
+			System.out.printf("그 해 %d일 남았습니다.\n", leftDayOfYear(year,month,day));
 			
 			System.out.print("다시 하시겠습니까?(1=yes, 0=no) : ");
 			retry = s.nextInt();
