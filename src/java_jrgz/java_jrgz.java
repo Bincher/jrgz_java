@@ -1,5 +1,5 @@
 //03.검색
-//연습 Q1. 선형 검색(보초법) - while대신 for
+//연습 Q2. 선형 검색의 상세 출력(한자리수만) 
 
 package java_jrgz;
 import java.util.*;
@@ -10,7 +10,18 @@ public class java_jrgz {
 		
 		int i = 0;
 		
+		System.out.print("  |");
+		for (int j = 0; j < n; j++) {
+			System.out.print(" " + j);
+		}
+		System.out.print("\n--+-------------------------------------------");
 		for (i = 0; i < n; i++){
+			System.out.print("\n  |");
+			for (int  j = 0; j < i; j++)
+				System.out.print("  ");
+			System.out.print(" *\n" + i + " |");
+			for (int  j = 0; j < n; j++)
+				System.out.print(" " + a[j]);
 			if (a[i] == key)
 				break;
 		}
@@ -35,6 +46,6 @@ public class java_jrgz {
 		
 		int idx = swqSearchSen(arr, num, arr[num]);
 		
-		System.out.print(arr[num] + "은(는) x[" + idx + "]에 있습니다.");
+		System.out.print("\n" + arr[num] + "은(는) x[" + idx + "]에 있습니다.");
 	}
 }
