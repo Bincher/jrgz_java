@@ -1,33 +1,57 @@
 //03.검색
-//연습 Q6. binarySearch 이용(그런데 실패시 삽입포인트값 출력을 겸하는)
+//실습 3-8. 신체검사, 키 그리고 comparator
 
 package java_jrgz;
 import java.util.*;
 
 public class java_jrgz {
 	
+	static class PhyscData{
+		private String name;
+		private int height;
+		private double vision;
+		
+		public PhyscData(String name, int height, double vision) {
+			this.name = name;
+			this.height = height;
+			this.vision = vision;
+		}
+		
+		public String toString() {
+			return name + " " + height + " " + vision;
+		}
+		
+		public static final Comparator<PhyscData> HEIGHT_ORDER = new HeightOrderComparator();
+		
+		private static class HeightOrderComparator implements Comparator<PhyscData>{
+			public int compare(PhyscData d1, PhyscData d2) {
+				return (d1.height > d2.height) ? 1 :
+					(d1.height < d2.height) ? -1 : 0;
+			}
+		}
+	}
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
-		System.out.print("요소수 : ");
-		int n = s.nextInt();
-		int [] a = new int[n];
+		PhyscData[] x = {
+				new PhyscData("김한결", 169, 0.3),
+				new PhyscData("이나령", 162, 0.4),
+				new PhyscData("유지훈", 168, 0.8),
+				new PhyscData("홍준기", 171, 1.5),
+				new PhyscData("전서현", 173, 0.7),
+				new PhyscData("이호연", 174, 1.2),
+				new PhyscData("이수민", 175, 2.0),
+		};
+		System.out.println("특정 cm인 사람 구하기 : ");
+		int height = s.nextInt();
+		int idx = Arrays.binarySearch(x, new PhyscData("", height, 0.0), PhyscData.HEIGHT_ORDER);
 		
-		System.out.print("오름차순으로 입력\na[0] = ");
-		a[0] = s.nextInt();
-		for (int i = 1; i < n; i++) {
-			do {
-				System.out.print("a[" + i + "] = ");
-				a[i] = s.nextInt();
-			}while(a[i] < a[i-1]);
+		if (idx < 0)
+			System.out.println("요소가 없습니다.");
+		else {
+			System.out.println("x[" + idx + "]에 있습니다.");
+			System.out.println("찾은 데이터 : " + x[idx]);
 		}
-		System.out.print("찾는 수 : ");
-		int key = s.nextInt();
-		
-		int result = Arrays.binarySearch(a, key);
-		if (result >= 0)
-			System.out.print("찾는 값의 위치는 a[" + result + "]입니다.");
-		else
-			System.out.print("찾는 값이 없으며 삽입 포인트는 a[" + -(result + 1) + "]입니다.");
+			
 			
 	}
 }
