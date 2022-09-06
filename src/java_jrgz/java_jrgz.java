@@ -1,5 +1,5 @@
 //03.검색
-//실습 3-3. 선형 검색(보초법)
+//연습 Q1. 선형 검색(보초법) - while대신 for
 
 package java_jrgz;
 import java.util.*;
@@ -8,14 +8,14 @@ public class java_jrgz {
 	
 	static int swqSearchSen(int[] a, int n, int key){
 		
-		int i = 0; 
-		while(true) {
+		int i = 0;
+		
+		for (i = 0; i < n; i++){
 			if (a[i] == key)
 				break;
-			i++;
 		}
-		return (i == n) ? -1 : i;
 		
+		return (i == n) ? -1 : i;
 	}
 	
 	public static void main(String[] args) {
