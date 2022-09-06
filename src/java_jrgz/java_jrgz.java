@@ -1,19 +1,32 @@
 //03.검색
-//연습 Q3. 일치값 저장 그리고 요솟수 
+//연습 Q5. 이진 검색 알고리즘 개선(중복값 중 중앙이 아닌 맨 앞의 요소) 
 
 package java_jrgz;
 import java.util.*;
 
 public class java_jrgz {
 	
-	static int searchIdx(int[] a, int n, int key, int[] idx) {
-		int j = 0;
-		for (int i = 0; i < n; i++) {
-			if (a[i] == key) {
-				idx[j++] = i;
+	static int binSearchX(int[] a, int n, int key) {
+		
+		int pl = 0;
+		int pr = n - 1;
+		
+		do {
+			int pc = (pl + pr) / 2;
+			if (a[pc] == key){
+				do{
+					pc--;
+				}while(a[pc] == key);
+				return (pc + 1);
 			}
-		}
-		return j;
+			else if (a[pc] > key) {
+				pr = pc - 1;
+			}
+			else {
+				pl = pc + 1;
+			}
+		}while(pl <= pr);
+		return -1;
 	}
 	
 	public static void main(String[] args) {
@@ -21,7 +34,6 @@ public class java_jrgz {
 		System.out.print("요소수 : ");
 		int n = s.nextInt();
 		int [] a = new int[n];
-		int [] idx = new int[n];
 		
 		for (int i = 0; i < n; i++) {
 			System.out.print("a[" + i + "] = ");
@@ -30,7 +42,7 @@ public class java_jrgz {
 		System.out.print("찾는 수 : ");
 		int key = s.nextInt();
 		
-		int result = searchIdx(a, n, key, idx);
-		System.out.print("일치하는 갯수는 " + result + "개입니다.");
+		int result = binSearchX(a, n, key);
+		System.out.print("찾는 값의 위치는 a[" + result + "]입니다.");
 	}
 }
